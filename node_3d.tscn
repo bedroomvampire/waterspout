@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://t24sd45h2c40"]
 
-[ext_resource type="Texture2D" uid="uid://d3dlbdo7yq170" path="res://water2.gif" id="1_jc1cg"]
+[ext_resource type="Texture2D" uid="uid://d3dlbdo7yq170" path="res://water2.gif" id="1_mmwoo"]
 [ext_resource type="PackedScene" uid="uid://rvc36ikivq54" path="res://model/player/watergunner2c2.glb" id="2_di4lm"]
 [ext_resource type="Script" path="res://character_controller.gd" id="2_otnmm"]
 [ext_resource type="Material" uid="uid://bcsdjocd61rhc" path="res://watermat.tres" id="4_6nxst"]
@@ -26,8 +26,7 @@ transparency = 1
 shading_mode = 2
 diffuse_mode = 1
 specular_mode = 2
-albedo_color = Color(0, 0.666667, 1, 1)
-albedo_texture = ExtResource("1_jc1cg")
+albedo_texture = ExtResource("1_mmwoo")
 uv1_triplanar = true
 texture_filter = 0
 
@@ -48,7 +47,7 @@ albedo_color = Color(0.25, 0.25, 0.25, 1)
 shading_mode = 2
 diffuse_mode = 1
 specular_mode = 2
-albedo_texture = ExtResource("1_jc1cg")
+albedo_texture = ExtResource("1_mmwoo")
 uv1_triplanar = true
 texture_filter = 0
 billboard_keep_scale = true
