@@ -1,0 +1,221 @@
+[gd_scene load_steps=23 format=3 uid="uid://t24sd45h2c40"]
+
+[ext_resource type="Texture2D" uid="uid://d3dlbdo7yq170" path="res://water2.gif" id="1_jc1cg"]
+[ext_resource type="PackedScene" uid="uid://rvc36ikivq54" path="res://model/player/watergunner2c2.glb" id="2_di4lm"]
+[ext_resource type="Script" path="res://character_controller.gd" id="2_otnmm"]
+[ext_resource type="Material" uid="uid://bcsdjocd61rhc" path="res://watermat.tres" id="4_6nxst"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4trsq"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_81ukq"]
+sky_material = SubResource("ProceduralSkyMaterial_4trsq")
+
+[sub_resource type="Environment" id="Environment_jpp7q"]
+background_mode = 1
+background_color = Color(0, 0.784314, 1, 1)
+sky = SubResource("Sky_81ukq")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.13
+reflected_light_source = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81lvh"]
+transparency = 1
+shading_mode = 2
+diffuse_mode = 1
+specular_mode = 2
+albedo_color = Color(0, 0.666667, 1, 1)
+albedo_texture = ExtResource("1_jc1cg")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jghl4"]
+shading_mode = 2
+diffuse_mode = 1
+specular_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t84w8"]
+shading_mode = 2
+diffuse_mode = 1
+specular_mode = 2
+albedo_color = Color(0.25, 0.25, 0.25, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aui6j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2fvfd"]
+shading_mode = 2
+diffuse_mode = 1
+specular_mode = 2
+albedo_texture = ExtResource("1_jc1cg")
+uv1_triplanar = true
+texture_filter = 0
+billboard_keep_scale = true
+grow_amount = 0.451
+point_size = 16.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cv0yl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tv8gy"]
+size = Vector3(0.375, 2, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_futbb"]
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 40.0
+initial_velocity_max = 240.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3126s"]
+material = ExtResource("4_6nxst")
+top_radius = 0.0
+bottom_radius = 0.063
+height = 0.063
+radial_segments = 4
+rings = 1
+cap_top = false
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_62dnh"]
+animation = &"ArmatureAction"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vgor0"]
+animation = &"ArmatureAction_001"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c1svs"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yy06b"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fjst7"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"stand"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_n1r3b"]
+states/stand/node = SubResource("AnimationNodeAnimation_62dnh")
+states/stand/position = Vector2(310.667, 84.6667)
+states/walk/node = SubResource("AnimationNodeAnimation_vgor0")
+states/walk/position = Vector2(481.333, 84.6667)
+transitions = ["Start", "stand", SubResource("AnimationNodeStateMachineTransition_c1svs"), "stand", "walk", SubResource("AnimationNodeStateMachineTransition_yy06b"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_fjst7")]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jpp7q")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(8192, 1, 8192)
+material = SubResource("StandardMaterial3D_81lvh")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+size = Vector3(1, 1, 2)
+material = SubResource("StandardMaterial3D_jghl4")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+use_collision = true
+size = Vector3(24, 0.5, 24)
+material = SubResource("StandardMaterial3D_t84w8")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -3)
+use_collision = true
+radius = 1.0
+height = 1.0
+material = SubResource("StandardMaterial3D_aui6j")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCylinder3D"]
+operation = 2
+radius = 0.825
+height = 1.0
+material = SubResource("StandardMaterial3D_aui6j")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCylinder3D"]
+radius = 0.825
+height = 0.625
+material = SubResource("StandardMaterial3D_2fvfd")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("model", "water_spray")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("2_otnmm")
+model = NodePath("watergunner2c2")
+water_spray = NodePath("watergunner2c2/Armature/Skeleton3D/BoneAttachment3D/MeshInstance3D2/GPUParticles3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_cv0yl")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.793353, 0.608761, 0, -0.608761, 0.793353, 0, 3.5219, 3.98338)
+
+[node name="watergunner2c2" parent="CharacterBody3D" instance=ExtResource("2_di4lm")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, -1, 0)
+
+[node name="Armature" parent="CharacterBody3D/watergunner2c2" index="0"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 1.25, 0)
+
+[node name="Skeleton3D" parent="CharacterBody3D/watergunner2c2/Armature" index="0"]
+bones/3/rotation = Quaternion(0.0789356, -0.0394636, 0.989673, 0.112954)
+bones/4/rotation = Quaternion(0.73652, -0.04942, 0.128882, 0.662182)
+bones/5/rotation = Quaternion(-0.0321258, 0.0011224, -0.186048, 0.982015)
+bones/7/rotation = Quaternion(0.0352164, 0.0336708, 0.338532, 0.939693)
+bones/12/rotation = Quaternion(0.191089, -0.360398, -0.91268, 0.0247673)
+bones/13/rotation = Quaternion(0.318708, -0.0636767, -0.0965948, 0.940765)
+bones/14/rotation = Quaternion(-0.0519567, -0.0370942, 0.148139, 0.986904)
+bones/16/rotation = Quaternion(-0.00252152, 0.0940127, -0.565814, 0.819152)
+bones/19/position = Vector3(-0.00954929, 0.431327, 0.228444)
+bones/19/rotation = Quaternion(0.0536854, 0.00888802, -0.0209309, 0.998299)
+bones/20/rotation = Quaternion(-0.00095152, 0.0354758, -0.21351, 0.976296)
+bones/21/rotation = Quaternion(0.042688, 3.54e-15, -3.735e-16, 0.999088)
+bones/23/rotation = Quaternion(-0.00883677, -0.707052, -0.00883677, 0.707052)
+bones/24/rotation = Quaternion(0.0124968, 8.44935e-05, -0.00675577, 0.999899)
+bones/26/rotation = Quaternion(-0.00883677, 0.707052, 0.00883677, 0.707052)
+bones/27/rotation = Quaternion(0.0124968, -8.44935e-05, 0.00675577, 0.999899)
+
+[node name="Head" parent="CharacterBody3D/watergunner2c2/Armature/Skeleton3D" index="2"]
+visible = false
+
+[node name="Head_001" parent="CharacterBody3D/watergunner2c2/Armature/Skeleton3D" index="3"]
+visible = false
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="CharacterBody3D/watergunner2c2/Armature/Skeleton3D" index="6"]
+transform = Transform3D(-0.993677, 0.0359455, 0.106369, 0.105945, -0.0135246, 0.99428, 0.0371785, 0.999262, 0.00963076, -0.707857, 0.467791, 1.60103)
+bone_name = "Right Hand"
+bone_idx = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/watergunner2c2/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 4.65661e-09, 2.046e-08, 1.86265e-08, 0.3, 9.31323e-09, 5.82077e-11, -1.39698e-09, 1, -0.325001, 0.25, 0.500004)
+mesh = SubResource("BoxMesh_tv8gy")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="CharacterBody3D/watergunner2c2/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 4.65661e-09, 2.046e-08, 1.86265e-08, 0.3, 1.02445e-08, 5.82077e-11, -1.86265e-09, 1, -0.325001, 1.75, 0.500005)
+mesh = SubResource("BoxMesh_tv8gy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CharacterBody3D/watergunner2c2/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 3.72529e-08, 7.33417e-09, 2.23517e-08, 1.85, 4.19095e-09, 5.82077e-11, -3.72529e-09, 0.45, -0.325001, 1.925, 0.772948)
+mesh = SubResource("BoxMesh_tv8gy")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="CharacterBody3D/watergunner2c2/Armature/Skeleton3D/BoneAttachment3D/MeshInstance3D2"]
+transform = Transform3D(1, 0, 7.33417e-09, -3.72529e-09, 1, 2.32831e-10, 2.68919e-08, -3.72529e-09, 1, 2.38419e-07, 1, 7.62939e-06)
+emitting = false
+amount = 3072
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_futbb")
+draw_pass_1 = SubResource("CylinderMesh_3126s")
+
+[node name="AnimationTree" type="AnimationTree" parent="CharacterBody3D/watergunner2c2"]
+tree_root = SubResource("AnimationNodeStateMachine_n1r3b")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/stand = false
+parameters/conditions/walk = false
+
+[editable path="CharacterBody3D/watergunner2c2"]

@@ -1,0 +1,14 @@
+[remap]
+
+importer="import_gif_to_animated_texture"
+type="AnimatedTexture"
+uid="uid://d3dlbdo7yq170"
+path="res://.godot/imported/water2.gif-b92ed5ba6bb249889d5d21f3effd2cc8.tres"
+
+[deps]
+
+source_file="res://water2.gif"
+dest_files=["res://.godot/imported/water2.gif-b92ed5ba6bb249889d5d21f3effd2cc8.tres"]
+
+[params]
+
