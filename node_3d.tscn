@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://t24sd45h2c40"]
+[gd_scene load_steps=35 format=3 uid="uid://t24sd45h2c40"]
 
 [ext_resource type="Texture2D" uid="uid://d3dlbdo7yq170" path="res://water2.gif" id="1_mmwoo"]
 [ext_resource type="PackedScene" uid="uid://rvc36ikivq54" path="res://model/player/watergunner2c2.glb" id="2_di4lm"]
@@ -78,6 +78,9 @@ cap_top = false
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_opmgf"]
 points = PackedVector3Array(-1, -3, 0, -0.995301, -3, -0.0980814, -0.995301, -3, 0.0978857, 0, 3, 0, -0.497651, 0, -0.0491386, -0.980814, -3, -0.195184, -0.980814, -3, 0.194988, 1, -3, 0, 0.995106, -3, -0.0980814, 0.980619, -3, -0.195184, 0.478465, 0, -0.145262, 0.923845, -3, -0.382733, 0.881754, -3, -0.471417, 0.831441, -3, -0.555599, 0.386453, 0, -0.317345, 0.70693, -3, -0.707126, 0.31715, 0, -0.386648, 0.555403, -3, -0.831637, 0.235513, 0, -0.441073, 0.382537, -3, -0.924041, 0.145067, 0, -0.478661, 0.194988, -3, -0.980814, 0.0978857, -3, -0.995301, 0, -3, -1, -0.0491386, 0, -0.497651, -0.0976899, 0, -0.490407, -0.145262, 0, -0.478661, -0.191464, 0, -0.46202, -0.235709, 0, -0.441073, -0.555599, -3, -0.831637, -0.317345, 0, -0.386648, -0.707126, -3, -0.707126, -0.386648, 0, -0.317345, -0.831637, -3, -0.555599, -0.441073, 0, -0.235709, -0.46202, 0, -0.191464, -0.478661, 0, -0.145262, -0.490407, 0, -0.0976899, -0.478661, 0, 0.145067, -0.924041, -3, 0.382537, -0.441073, 0, 0.235513, -0.831637, -3, 0.555403, -0.386648, 0, 0.31715, -0.707126, -3, 0.70693, -0.317345, 0, 0.386453, -0.555599, -3, 0.831441, -0.471417, -3, 0.881754, -0.382733, -3, 0.923845, -0.145262, 0, 0.478465, -0.195184, -3, 0.980619, -0.0980814, -3, 0.995106, 0, -3, 1, 0.0978857, -3, 0.995106, 0.194988, -3, 0.980619, 0.290133, -3, 0.95693, 0.382537, -3, 0.923845, 0.471222, -3, 0.881754, 0.555403, -3, 0.831441, 0.634299, -3, 0.772905, 0.70693, -3, 0.70693, 0.772905, -3, 0.634299, 0.831441, -3, 0.555403, 0.881754, -3, 0.471222, 0.923845, -3, 0.382537, 0.95693, -3, 0.290133, 0.980619, -3, 0.194988, 0.995106, -3, 0.0978857, -0.957126, -3, -0.290329, -0.957126, -3, 0.290133, 0.95693, -3, -0.290329, 0.772905, -3, -0.634495, 0.634299, -3, -0.773101, 0.471222, -3, -0.88195, 0.290133, -3, -0.957126, -0.0980814, -3, -0.995301, -0.195184, -3, -0.980814, -0.290329, -3, -0.957126, -0.382733, -3, -0.924041, -0.471417, -3, -0.88195, -0.634495, -3, -0.773101, -0.773101, -3, -0.634495, -0.88195, -3, -0.471417, -0.924041, -3, -0.382733, -0.88195, -3, 0.471222, -0.773101, -3, 0.634299, -0.634495, -3, 0.772905, -0.290329, -3, 0.95693)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_t5myk"]
+radius = 100.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_tv8gy"]
 size = Vector3(0.375, 2, 1)
@@ -177,6 +180,12 @@ use_collision = true
 size = Vector3(8, 6, 1)
 material = SubResource("StandardMaterial3D_jghl4")
 
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3.5, -16.5)
+use_collision = true
+size = Vector3(8, 6, 1)
+material = SubResource("StandardMaterial3D_jghl4")
+
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 use_collision = true
@@ -205,6 +214,10 @@ material = SubResource("StandardMaterial3D_2fvfd")
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3.5, -9.5)
+size = Vector3(8, 6, 1)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3.5, -16.5)
 size = Vector3(8, 6, 1)
 
 [node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="StaticBody3D"]
@@ -242,6 +255,36 @@ shape = SubResource("CapsuleShape3D_cv0yl")
 [node name="watergunner2c2" parent="CharacterBody3D" instance=ExtResource("2_di4lm")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, -1, 0)
 
+[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/watergunner2c2"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.0208748, 1.39385, 0.671076)
+target_position = Vector3(0, 0, -10)
+collide_with_areas = true
+
+[node name="RayCast3D2" type="RayCast3D" parent="CharacterBody3D/watergunner2c2"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.0208748, 1.39385, 0.671076)
+target_position = Vector3(0, -2, -15)
+collide_with_areas = true
+
+[node name="RayCast3D3" type="RayCast3D" parent="CharacterBody3D/watergunner2c2"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.0208748, 1.39385, 0.671076)
+target_position = Vector3(-2.5, 0, -10)
+collide_with_areas = true
+
+[node name="RayCast3D4" type="RayCast3D" parent="CharacterBody3D/watergunner2c2"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.0208748, 1.39385, 0.671076)
+target_position = Vector3(-1.75, -0.625, -10)
+collide_with_areas = true
+
+[node name="RayCast3D5" type="RayCast3D" parent="CharacterBody3D/watergunner2c2"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.0208748, 1.39385, 0.671076)
+target_position = Vector3(2.5, 0, -10)
+collide_with_areas = true
+
+[node name="RayCast3D6" type="RayCast3D" parent="CharacterBody3D/watergunner2c2"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.0208748, 1.39385, 0.671076)
+target_position = Vector3(1.75, -0.625, -10)
+collide_with_areas = true
+
 [node name="Area3D" type="Area3D" parent="CharacterBody3D/watergunner2c2"]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.0208748, 1.39385, 0.671076)
 
@@ -253,16 +296,25 @@ mesh = SubResource("CylinderMesh_kkdyy")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/watergunner2c2/Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -3)
 shape = SubResource("ConvexPolygonShape3D_opmgf")
+disabled = true
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D/watergunner2c2/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 0, -0.75, -3)
 shape = SubResource("ConvexPolygonShape3D_opmgf")
+disabled = true
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="CharacterBody3D/watergunner2c2/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 0.5, -0.866026, 0, 0.866026, 0.5, 0, -1.5, -2.625)
 shape = SubResource("ConvexPolygonShape3D_opmgf")
+disabled = true
 
-[node name="Armature" parent="CharacterBody3D/watergunner2c2" index="1"]
+[node name="Water" type="Node" parent="CharacterBody3D/watergunner2c2/Area3D"]
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="CharacterBody3D/watergunner2c2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0.67)
+shape = SubResource("CylinderShape3D_t5myk")
+
+[node name="Armature" parent="CharacterBody3D/watergunner2c2" index="7"]
 transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 1.25, 0)
 
 [node name="Skeleton3D" parent="CharacterBody3D/watergunner2c2/Armature" index="0"]
@@ -349,73 +401,346 @@ grow_vertical = 0
 value = 90.0
 show_percentage = false
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -15)
+[node name="Timer" type="Timer" parent="CharacterBody3D"]
+wait_time = 0.1
+
+[node name="Fire" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -15)
 script = ExtResource("5_817p5")
 
-[node name="Fire" type="Node" parent="Area3D"]
+[node name="Fire" type="Node" parent="Fire"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fire"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_b32oi")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Area3D"]
-amount = 256
-fixed_fps = 20
-process_material = SubResource("ParticleProcessMaterial_6ptwp")
-draw_pass_1 = SubResource("CylinderMesh_6btch")
-
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="Area3D"]
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Fire"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 amount = 256
 fixed_fps = 20
 process_material = SubResource("ParticleProcessMaterial_6ptwp")
 draw_pass_1 = SubResource("CylinderMesh_6btch")
 
-[node name="GPUParticles3D3" type="GPUParticles3D" parent="Area3D"]
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Fire"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 amount = 256
 fixed_fps = 20
 process_material = SubResource("ParticleProcessMaterial_6ptwp")
 draw_pass_1 = SubResource("CylinderMesh_6btch")
 
-[node name="GPUParticles3D4" type="GPUParticles3D" parent="Area3D"]
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="Fire"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 amount = 256
 fixed_fps = 20
 process_material = SubResource("ParticleProcessMaterial_6ptwp")
 draw_pass_1 = SubResource("CylinderMesh_6btch")
 
-[node name="GPUParticles3D5" type="GPUParticles3D" parent="Area3D"]
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="Fire"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 amount = 256
 fixed_fps = 20
 process_material = SubResource("ParticleProcessMaterial_6ptwp")
 draw_pass_1 = SubResource("CylinderMesh_6btch")
 
-[node name="GPUParticles3D6" type="GPUParticles3D" parent="Area3D"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.353553, 0, -0.353554)
+[node name="Fire2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -13)
+script = ExtResource("5_817p5")
+
+[node name="Fire" type="Node" parent="Fire2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fire2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_b32oi")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Fire2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 amount = 256
 fixed_fps = 20
 process_material = SubResource("ParticleProcessMaterial_6ptwp")
 draw_pass_1 = SubResource("CylinderMesh_6btch")
 
-[node name="GPUParticles3D7" type="GPUParticles3D" parent="Area3D"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.353553, 0, 0.353554)
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Fire2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 amount = 256
 fixed_fps = 20
 process_material = SubResource("ParticleProcessMaterial_6ptwp")
 draw_pass_1 = SubResource("CylinderMesh_6btch")
 
-[node name="GPUParticles3D8" type="GPUParticles3D" parent="Area3D"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.353553, 0, 0.353554)
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="Fire2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 amount = 256
 fixed_fps = 20
 process_material = SubResource("ParticleProcessMaterial_6ptwp")
 draw_pass_1 = SubResource("CylinderMesh_6btch")
 
-[node name="GPUParticles3D9" type="GPUParticles3D" parent="Area3D"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.353553, 0, -0.353554)
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="Fire2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="Fire3" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -11)
+script = ExtResource("5_817p5")
+
+[node name="Fire" type="Node" parent="Fire3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fire3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_b32oi")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Fire3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Fire3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="Fire3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="Fire3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="Fire4" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -15)
+script = ExtResource("5_817p5")
+
+[node name="Fire" type="Node" parent="Fire4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fire4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_b32oi")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Fire4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Fire4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="Fire4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="Fire4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="Fire5" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -13)
+script = ExtResource("5_817p5")
+
+[node name="Fire" type="Node" parent="Fire5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fire5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_b32oi")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Fire5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Fire5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="Fire5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="Fire5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="Fire6" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -11)
+script = ExtResource("5_817p5")
+
+[node name="Fire" type="Node" parent="Fire6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fire6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_b32oi")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Fire6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Fire6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="Fire6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="Fire6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="Fire7" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -15)
+script = ExtResource("5_817p5")
+
+[node name="Fire" type="Node" parent="Fire7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fire7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_b32oi")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Fire7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Fire7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="Fire7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="Fire7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="Fire8" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -13)
+script = ExtResource("5_817p5")
+
+[node name="Fire" type="Node" parent="Fire8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fire8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_b32oi")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Fire8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Fire8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="Fire8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="Fire8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="Fire9" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -11)
+script = ExtResource("5_817p5")
+
+[node name="Fire" type="Node" parent="Fire9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fire9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_b32oi")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Fire9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Fire9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="Fire9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="Fire9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 amount = 256
 fixed_fps = 20
 process_material = SubResource("ParticleProcessMaterial_6ptwp")
@@ -423,5 +748,15 @@ draw_pass_1 = SubResource("CylinderMesh_6btch")
 
 [connection signal="area_entered" from="CharacterBody3D/watergunner2c2/Area3D" to="CharacterBody3D" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="CharacterBody3D/watergunner2c2/Area3D" to="CharacterBody3D" method="_on_area_3d_area_exited"]
+[connection signal="timeout" from="CharacterBody3D/Timer" to="CharacterBody3D" method="_on_timer_timeout"]
+[connection signal="area_entered" from="Fire" to="Fire" method="_on_area_entered"]
+[connection signal="area_entered" from="Fire2" to="Fire2" method="_on_area_entered"]
+[connection signal="area_entered" from="Fire3" to="Fire3" method="_on_area_entered"]
+[connection signal="area_entered" from="Fire4" to="Fire4" method="_on_area_entered"]
+[connection signal="area_entered" from="Fire5" to="Fire5" method="_on_area_entered"]
+[connection signal="area_entered" from="Fire6" to="Fire6" method="_on_area_entered"]
+[connection signal="area_entered" from="Fire7" to="Fire7" method="_on_area_entered"]
+[connection signal="area_entered" from="Fire8" to="Fire8" method="_on_area_entered"]
+[connection signal="area_entered" from="Fire9" to="Fire9" method="_on_area_entered"]
 
 [editable path="CharacterBody3D/watergunner2c2"]

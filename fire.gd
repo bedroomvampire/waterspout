@@ -1,6 +1,7 @@
 extends Area3D
 
 @export var health : float = 100
+var dmg : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,3 +14,12 @@ func _process(delta):
 	
 	if health <= 0:
 		queue_free()
+	
+	if dmg:
+		health -= 10 * delta
+
+
+func _on_area_entered(area):
+	if area.has_node("Water"):
+		pass
+		#print("ya")

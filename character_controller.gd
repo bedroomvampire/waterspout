@@ -14,6 +14,16 @@ const JUMP_VELOCITY = 4.5
 
 var fire : Area3D
 var is_entered : bool
+@onready var timer = $Timer
+
+#bruh moment
+@onready var raycast_1 =  $watergunner2c2/RayCast3D
+@onready var raycast_2 =  $watergunner2c2/RayCast3D2
+@onready var raycast_3 =  $watergunner2c2/RayCast3D3
+@onready var raycast_4 =  $watergunner2c2/RayCast3D4
+@onready var raycast_5 =  $watergunner2c2/RayCast3D5
+@onready var raycast_6 =  $watergunner2c2/RayCast3D6
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -28,12 +38,26 @@ func _process(delta):
 	if cam_dir:
 		global_rotation.y += cam_dir * 2 * delta
 	
-	#if area_detection.
-	
+	if raycast_1.is_colliding():
+		if raycast_1.get_collider().has_node("Fire"):
+			raycast_1.get_collider().dmg = true
+	elif raycast_2.is_colliding():
+		if raycast_2.get_collider().has_node("Fire"):
+			raycast_2.get_collider().dmg = true
+	if raycast_3.is_colliding():
+		if raycast_3.get_collider().has_node("Fire"):
+			raycast_3.get_collider().dmg = true
+	elif raycast_4.is_colliding():
+		if raycast_4.get_collider().has_node("Fire"):
+			raycast_4.get_collider().dmg = true
+	if raycast_5.is_colliding():
+		if raycast_5.get_collider().has_node("Fire"):
+			raycast_5.get_collider().dmg = true
+	elif raycast_6.is_colliding():
+		if raycast_6.get_collider().has_node("Fire"):
+			raycast_6.get_collider().dmg = true
 
 func _physics_process(delta):
-	var _delta = 1 * delta
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -44,10 +68,22 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("ui_accept"):
 		water_spray.emitting = true
-		area_detection.monitoring = true
+		area_detection.monitoring = false
+		raycast_1.enabled = true
+		raycast_2.enabled = true
+		raycast_3.enabled = true
+		raycast_4.enabled = true
+		raycast_5.enabled = true
+		raycast_6.enabled = true
 	else:
 		water_spray.emitting = false
-		area_detection.monitoring = false
+		area_detection.monitoring = true
+		raycast_1.enabled = false
+		raycast_2.enabled = false
+		raycast_3.enabled = false
+		raycast_4.enabled = false
+		raycast_5.enabled = false
+		raycast_6.enabled = false
 	
 	if fire && area_detection.monitoring:
 		fire.health -= 10 * delta
@@ -73,8 +109,14 @@ func _physics_process(delta):
 func _on_area_3d_area_entered(area):
 	if area.has_node("Fire"):
 		is_entered = true
-		fire = area
+		area.dmg = false
+		#area.health -= 10
 
 func _on_area_3d_area_exited(area):
-	is_entered = false
-	fire = null
+	if area.has_node("Fire"):
+		is_entered = false
+		#area.dmg = false
+
+
+func _on_timer_timeout(area):
+	pass # Replace with function body.
