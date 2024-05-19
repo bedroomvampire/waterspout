@@ -1,9 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://t24sd45h2c40"]
+[gd_scene load_steps=34 format=3 uid="uid://t24sd45h2c40"]
 
 [ext_resource type="Texture2D" uid="uid://d3dlbdo7yq170" path="res://water2.gif" id="1_mmwoo"]
 [ext_resource type="PackedScene" uid="uid://rvc36ikivq54" path="res://model/player/watergunner2c2.glb" id="2_di4lm"]
+[ext_resource type="Texture2D" uid="uid://7q8jypf32xaw" path="res://brick.png" id="2_kd717"]
 [ext_resource type="Script" path="res://character_controller.gd" id="2_otnmm"]
 [ext_resource type="Material" uid="uid://bcsdjocd61rhc" path="res://watermat.tres" id="4_6nxst"]
+[ext_resource type="Script" path="res://fire.gd" id="5_817p5"]
+[ext_resource type="Material" uid="uid://cl2yk3m5m4thm" path="res://flamemat.tres" id="5_t1e0r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4trsq"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,6 +25,7 @@ ambient_light_energy = 0.13
 reflected_light_source = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81lvh"]
+render_priority = -1
 transparency = 1
 shading_mode = 2
 diffuse_mode = 1
@@ -34,12 +38,18 @@ texture_filter = 0
 shading_mode = 2
 diffuse_mode = 1
 specular_mode = 2
+albedo_texture = ExtResource("2_kd717")
+uv1_triplanar = true
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t84w8"]
 shading_mode = 2
 diffuse_mode = 1
 specular_mode = 2
 albedo_color = Color(0.25, 0.25, 0.25, 1)
+albedo_texture = ExtResource("2_kd717")
+uv1_triplanar = true
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aui6j"]
 
@@ -54,7 +64,20 @@ billboard_keep_scale = true
 grow_amount = 0.451
 point_size = 16.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qee2n"]
+size = Vector3(96, 0.5, 96)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cv0yl"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kkdyy"]
+top_radius = 0.0
+bottom_radius = 1.0
+height = 6.0
+rings = 1
+cap_top = false
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_opmgf"]
+points = PackedVector3Array(-1, -3, 0, -0.995301, -3, -0.0980814, -0.995301, -3, 0.0978857, 0, 3, 0, -0.497651, 0, -0.0491386, -0.980814, -3, -0.195184, -0.980814, -3, 0.194988, 1, -3, 0, 0.995106, -3, -0.0980814, 0.980619, -3, -0.195184, 0.478465, 0, -0.145262, 0.923845, -3, -0.382733, 0.881754, -3, -0.471417, 0.831441, -3, -0.555599, 0.386453, 0, -0.317345, 0.70693, -3, -0.707126, 0.31715, 0, -0.386648, 0.555403, -3, -0.831637, 0.235513, 0, -0.441073, 0.382537, -3, -0.924041, 0.145067, 0, -0.478661, 0.194988, -3, -0.980814, 0.0978857, -3, -0.995301, 0, -3, -1, -0.0491386, 0, -0.497651, -0.0976899, 0, -0.490407, -0.145262, 0, -0.478661, -0.191464, 0, -0.46202, -0.235709, 0, -0.441073, -0.555599, -3, -0.831637, -0.317345, 0, -0.386648, -0.707126, -3, -0.707126, -0.386648, 0, -0.317345, -0.831637, -3, -0.555599, -0.441073, 0, -0.235709, -0.46202, 0, -0.191464, -0.478661, 0, -0.145262, -0.490407, 0, -0.0976899, -0.478661, 0, 0.145067, -0.924041, -3, 0.382537, -0.441073, 0, 0.235513, -0.831637, -3, 0.555403, -0.386648, 0, 0.31715, -0.707126, -3, 0.70693, -0.317345, 0, 0.386453, -0.555599, -3, 0.831441, -0.471417, -3, 0.881754, -0.382733, -3, 0.923845, -0.145262, 0, 0.478465, -0.195184, -3, 0.980619, -0.0980814, -3, 0.995106, 0, -3, 1, 0.0978857, -3, 0.995106, 0.194988, -3, 0.980619, 0.290133, -3, 0.95693, 0.382537, -3, 0.923845, 0.471222, -3, 0.881754, 0.555403, -3, 0.831441, 0.634299, -3, 0.772905, 0.70693, -3, 0.70693, 0.772905, -3, 0.634299, 0.831441, -3, 0.555403, 0.881754, -3, 0.471222, 0.923845, -3, 0.382537, 0.95693, -3, 0.290133, 0.980619, -3, 0.194988, 0.995106, -3, 0.0978857, -0.957126, -3, -0.290329, -0.957126, -3, 0.290133, 0.95693, -3, -0.290329, 0.772905, -3, -0.634495, 0.634299, -3, -0.773101, 0.471222, -3, -0.88195, 0.290133, -3, -0.957126, -0.0980814, -3, -0.995301, -0.195184, -3, -0.980814, -0.290329, -3, -0.957126, -0.382733, -3, -0.924041, -0.471417, -3, -0.88195, -0.634495, -3, -0.773101, -0.773101, -3, -0.634495, -0.88195, -3, -0.471417, -0.924041, -3, -0.382733, -0.88195, -3, 0.471222, -0.773101, -3, 0.634299, -0.634495, -3, 0.772905, -0.290329, -3, 0.95693)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tv8gy"]
 size = Vector3(0.375, 2, 1)
@@ -62,9 +85,12 @@ size = Vector3(0.375, 2, 1)
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_futbb"]
 particle_flag_align_y = true
 direction = Vector3(0, 1, 0)
-spread = 20.0
+spread = 40.0
 initial_velocity_min = 40.0
-initial_velocity_max = 240.0
+initial_velocity_max = 80.0
+collision_mode = 1
+collision_friction = 0.25
+collision_bounce = 0.25
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_3126s"]
 material = ExtResource("4_6nxst")
@@ -101,6 +127,37 @@ states/walk/node = SubResource("AnimationNodeAnimation_vgor0")
 states/walk/position = Vector2(481.333, 84.6667)
 transitions = ["Start", "stand", SubResource("AnimationNodeStateMachineTransition_c1svs"), "stand", "walk", SubResource("AnimationNodeStateMachineTransition_yy06b"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_fjst7")]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b32oi"]
+height = 8.0
+radius = 1.5
+
+[sub_resource type="Curve" id="Curve_fc36p"]
+_data = [Vector2(0, 1), 0.0, -0.123945, 0, 0, Vector2(1, 0), -0.64127, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ya2ql"]
+curve = SubResource("Curve_fc36p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6ptwp"]
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 9.8, 0)
+scale_min = 0.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_ya2ql")
+scale_over_velocity_max = 419.35
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6btch"]
+material = ExtResource("5_t1e0r")
+top_radius = 0.0
+bottom_radius = 0.125
+height = 0.25
+radial_segments = 4
+rings = 1
+cap_top = false
+
 [node name="Node3D" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -115,15 +172,15 @@ size = Vector3(8192, 1, 8192)
 material = SubResource("StandardMaterial3D_81lvh")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-visible = false
-size = Vector3(1, 1, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3.5, -9.5)
+use_collision = true
+size = Vector3(8, 6, 1)
 material = SubResource("StandardMaterial3D_jghl4")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 use_collision = true
-size = Vector3(24, 0.5, 24)
+size = Vector3(96, 0.5, 96)
 material = SubResource("StandardMaterial3D_t84w8")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
@@ -144,22 +201,68 @@ radius = 0.825
 height = 0.625
 material = SubResource("StandardMaterial3D_2fvfd")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("model", "water_spray")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3.5, -9.5)
+size = Vector3(8, 6, 1)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+size = Vector3(96, 0.5, 96)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_qee2n")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("arm", "arm_pos", "model", "water_spray", "area_detection", "health_prog_bar", "water_prog_bar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8)
 script = ExtResource("2_otnmm")
+arm = NodePath("SpringArm3D")
+arm_pos = NodePath("Marker3D")
 model = NodePath("watergunner2c2")
-water_spray = NodePath("watergunner2c2/Armature/Skeleton3D/BoneAttachment3D/MeshInstance3D2/GPUParticles3D")
+water_spray = NodePath("watergunner2c2/Armature/Skeleton3D/BoneAttachment3D/GPUParticles3D")
+area_detection = NodePath("watergunner2c2/Area3D")
+health_prog_bar = NodePath("ProgressBar")
+water_prog_bar = NodePath("ProgressBar2")
+
+[node name="Marker3D" type="Marker3D" parent="CharacterBody3D"]
+transform = Transform3D(1, -4.21249e-08, 4.76135e-08, 0, 0.748956, 0.66262, -6.35732e-08, -0.66262, 0.748956, 0, 0, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D"]
+transform = Transform3D(1, -4.21249e-08, 4.76135e-08, 0, 0.748956, 0.66262, -6.35732e-08, -0.66262, 0.748956, 0, 0, 0)
+top_level = true
+spring_length = 6.0
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D"]
+transform = Transform3D(1, 3.87009e-08, -5.0436e-08, -4.21249e-08, 0.997564, -0.0697567, 4.76135e-08, 0.0697567, 0.997564, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_cv0yl")
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.793353, 0.608761, 0, -0.608761, 0.793353, 0, 3.5219, 3.98338)
-
 [node name="watergunner2c2" parent="CharacterBody3D" instance=ExtResource("2_di4lm")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, -1, 0)
 
-[node name="Armature" parent="CharacterBody3D/watergunner2c2" index="0"]
+[node name="Area3D" type="Area3D" parent="CharacterBody3D/watergunner2c2"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.0208748, 1.39385, 0.671076)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/watergunner2c2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -3)
+visible = false
+mesh = SubResource("CylinderMesh_kkdyy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/watergunner2c2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -3)
+shape = SubResource("ConvexPolygonShape3D_opmgf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D/watergunner2c2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 0, -0.75, -3)
+shape = SubResource("ConvexPolygonShape3D_opmgf")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="CharacterBody3D/watergunner2c2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 0.5, -0.866026, 0, 0.866026, 0.5, 0, -1.5, -2.625)
+shape = SubResource("ConvexPolygonShape3D_opmgf")
+
+[node name="Armature" parent="CharacterBody3D/watergunner2c2" index="1"]
 transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 1.25, 0)
 
 [node name="Skeleton3D" parent="CharacterBody3D/watergunner2c2/Armature" index="0"]
@@ -203,11 +306,12 @@ mesh = SubResource("BoxMesh_tv8gy")
 transform = Transform3D(1, 3.72529e-08, 7.33417e-09, 2.23517e-08, 1.85, 4.19095e-09, 5.82077e-11, -3.72529e-09, 0.45, -0.325001, 1.925, 0.772948)
 mesh = SubResource("BoxMesh_tv8gy")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="CharacterBody3D/watergunner2c2/Armature/Skeleton3D/BoneAttachment3D/MeshInstance3D2"]
-transform = Transform3D(1, 0, 7.33417e-09, -3.72529e-09, 1, 2.32831e-10, 2.68919e-08, -3.72529e-09, 1, 2.38419e-07, 1, 7.62939e-06)
-emitting = false
+[node name="GPUParticles3D" type="GPUParticles3D" parent="CharacterBody3D/watergunner2c2/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(0.993677, 0.0687805, 0.0476752, -0.0359457, 1.84864, -0.00608603, -0.106369, 0.017817, 0.447426, -0.325001, 3.77501, 0.772951)
 amount = 3072
 lifetime = 2.0
+collision_base_size = 0.1
+visibility_aabb = AABB(-18, -35, -18, 36, 70, 36)
 process_material = SubResource("ParticleProcessMaterial_futbb")
 draw_pass_1 = SubResource("CylinderMesh_3126s")
 
@@ -216,5 +320,108 @@ tree_root = SubResource("AnimationNodeStateMachine_n1r3b")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/stand = false
 parameters/conditions/walk = false
+
+[node name="ProgressBar" type="ProgressBar" parent="CharacterBody3D"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -32.0
+offset_right = -8.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 96.0
+show_percentage = false
+
+[node name="ProgressBar2" type="ProgressBar" parent="CharacterBody3D"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -16.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 90.0
+show_percentage = false
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -15)
+script = ExtResource("5_817p5")
+
+[node name="Fire" type="Node" parent="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_b32oi")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Area3D"]
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D6" type="GPUParticles3D" parent="Area3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.353553, 0, -0.353554)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D7" type="GPUParticles3D" parent="Area3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.353553, 0, 0.353554)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D8" type="GPUParticles3D" parent="Area3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.353553, 0, 0.353554)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D9" type="GPUParticles3D" parent="Area3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.353553, 0, -0.353554)
+amount = 256
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[connection signal="area_entered" from="CharacterBody3D/watergunner2c2/Area3D" to="CharacterBody3D" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="CharacterBody3D/watergunner2c2/Area3D" to="CharacterBody3D" method="_on_area_3d_area_exited"]
 
 [editable path="CharacterBody3D/watergunner2c2"]

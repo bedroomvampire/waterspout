@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cl2yk3m5m4thm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsw85"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 1
+specular_mode = 2
+albedo_color = Color(1, 0.121569, 0, 0.498039)
+grow_amount = -4.2
+
+[resource]
+render_priority = 1
+next_pass = SubResource("StandardMaterial3D_lsw85")
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+diffuse_mode = 1
+specular_mode = 2
+albedo_color = Color(1, 0.0470588, 0, 1)
