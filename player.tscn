@@ -1,0 +1,251 @@
+[gd_scene load_steps=17 format=3 uid="uid://daesficcv6hw7"]
+
+[ext_resource type="Script" path="res://character_controller.gd" id="1_3n01b"]
+[ext_resource type="PackedScene" uid="uid://rvc36ikivq54" path="res://model/player/watergunner2c2.glb" id="2_s26r4"]
+[ext_resource type="Material" uid="uid://bcsdjocd61rhc" path="res://watermat.tres" id="3_sfg18"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cv0yl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tv8gy"]
+size = Vector3(0.375, 2, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_futbb"]
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 40.0
+initial_velocity_min = 40.0
+initial_velocity_max = 80.0
+collision_mode = 1
+collision_friction = 0.25
+collision_bounce = 0.25
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3126s"]
+material = ExtResource("3_sfg18")
+top_radius = 0.0
+bottom_radius = 0.063
+height = 0.063
+radial_segments = 4
+rings = 1
+cap_top = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kkdyy"]
+top_radius = 0.0
+bottom_radius = 1.0
+height = 6.0
+rings = 1
+cap_top = false
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_opmgf"]
+points = PackedVector3Array(-1, -3, 0, -0.995301, -3, -0.0980814, -0.995301, -3, 0.0978857, 0, 3, 0, -0.497651, 0, -0.0491386, -0.980814, -3, -0.195184, -0.980814, -3, 0.194988, 1, -3, 0, 0.995106, -3, -0.0980814, 0.980619, -3, -0.195184, 0.478465, 0, -0.145262, 0.923845, -3, -0.382733, 0.881754, -3, -0.471417, 0.831441, -3, -0.555599, 0.386453, 0, -0.317345, 0.70693, -3, -0.707126, 0.31715, 0, -0.386648, 0.555403, -3, -0.831637, 0.235513, 0, -0.441073, 0.382537, -3, -0.924041, 0.145067, 0, -0.478661, 0.194988, -3, -0.980814, 0.0978857, -3, -0.995301, 0, -3, -1, -0.0491386, 0, -0.497651, -0.0976899, 0, -0.490407, -0.145262, 0, -0.478661, -0.191464, 0, -0.46202, -0.235709, 0, -0.441073, -0.555599, -3, -0.831637, -0.317345, 0, -0.386648, -0.707126, -3, -0.707126, -0.386648, 0, -0.317345, -0.831637, -3, -0.555599, -0.441073, 0, -0.235709, -0.46202, 0, -0.191464, -0.478661, 0, -0.145262, -0.490407, 0, -0.0976899, -0.478661, 0, 0.145067, -0.924041, -3, 0.382537, -0.441073, 0, 0.235513, -0.831637, -3, 0.555403, -0.386648, 0, 0.31715, -0.707126, -3, 0.70693, -0.317345, 0, 0.386453, -0.555599, -3, 0.831441, -0.471417, -3, 0.881754, -0.382733, -3, 0.923845, -0.145262, 0, 0.478465, -0.195184, -3, 0.980619, -0.0980814, -3, 0.995106, 0, -3, 1, 0.0978857, -3, 0.995106, 0.194988, -3, 0.980619, 0.290133, -3, 0.95693, 0.382537, -3, 0.923845, 0.471222, -3, 0.881754, 0.555403, -3, 0.831441, 0.634299, -3, 0.772905, 0.70693, -3, 0.70693, 0.772905, -3, 0.634299, 0.831441, -3, 0.555403, 0.881754, -3, 0.471222, 0.923845, -3, 0.382537, 0.95693, -3, 0.290133, 0.980619, -3, 0.194988, 0.995106, -3, 0.0978857, -0.957126, -3, -0.290329, -0.957126, -3, 0.290133, 0.95693, -3, -0.290329, 0.772905, -3, -0.634495, 0.634299, -3, -0.773101, 0.471222, -3, -0.88195, 0.290133, -3, -0.957126, -0.0980814, -3, -0.995301, -0.195184, -3, -0.980814, -0.290329, -3, -0.957126, -0.382733, -3, -0.924041, -0.471417, -3, -0.88195, -0.634495, -3, -0.773101, -0.773101, -3, -0.634495, -0.88195, -3, -0.471417, -0.924041, -3, -0.382733, -0.88195, -3, 0.471222, -0.773101, -3, 0.634299, -0.634495, -3, 0.772905, -0.290329, -3, 0.95693)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_t5myk"]
+radius = 100.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_62dnh"]
+animation = &"ArmatureAction"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vgor0"]
+animation = &"ArmatureAction_001"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c1svs"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yy06b"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fjst7"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"stand"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_n1r3b"]
+states/stand/node = SubResource("AnimationNodeAnimation_62dnh")
+states/stand/position = Vector2(310.667, 84.6667)
+states/walk/node = SubResource("AnimationNodeAnimation_vgor0")
+states/walk/position = Vector2(481.333, 84.6667)
+transitions = ["Start", "stand", SubResource("AnimationNodeStateMachineTransition_c1svs"), "stand", "walk", SubResource("AnimationNodeStateMachineTransition_yy06b"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_fjst7")]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("arm", "arm_pos", "model", "water_spray", "area_detection", "health_prog_bar", "water_prog_bar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8)
+script = ExtResource("1_3n01b")
+arm = NodePath("SpringArm3D")
+arm_pos = NodePath("Marker3D")
+model = NodePath("watergunner2c2")
+water_spray = NodePath("watergunner2c2/Armature/Skeleton3D/BoneAttachment3D/GPUParticles3D")
+area_detection = NodePath("watergunner2c2/Area3D")
+health_prog_bar = NodePath("ProgressBar")
+water_prog_bar = NodePath("ProgressBar2")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, -4.21249e-08, 4.76135e-08, 0, 0.748956, 0.66262, -6.35732e-08, -0.66262, 0.748956, 0, 0, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, -4.21249e-08, 4.76135e-08, 0, 0.748956, 0.66262, -6.35732e-08, -0.66262, 0.748956, 0, 0, 0)
+top_level = true
+spring_length = 6.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(1, 3.87009e-08, -5.0436e-08, -4.21249e-08, 0.997564, -0.0697567, 4.76135e-08, 0.0697567, 0.997564, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_cv0yl")
+
+[node name="watergunner2c2" parent="." instance=ExtResource("2_s26r4")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, -1, 0)
+
+[node name="Armature" parent="watergunner2c2" index="0"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 1.25, 0)
+
+[node name="Skeleton3D" parent="watergunner2c2/Armature" index="0"]
+bones/3/rotation = Quaternion(0.0789356, -0.0394636, 0.989673, 0.112954)
+bones/4/rotation = Quaternion(0.73652, -0.04942, 0.128882, 0.662182)
+bones/5/rotation = Quaternion(-0.0321258, 0.0011224, -0.186048, 0.982015)
+bones/7/rotation = Quaternion(0.0352164, 0.0336708, 0.338532, 0.939693)
+bones/12/rotation = Quaternion(0.191089, -0.360398, -0.91268, 0.0247673)
+bones/13/rotation = Quaternion(0.318708, -0.0636767, -0.0965948, 0.940765)
+bones/14/rotation = Quaternion(-0.0519567, -0.0370942, 0.148139, 0.986904)
+bones/16/rotation = Quaternion(-0.00252152, 0.0940127, -0.565814, 0.819152)
+bones/19/position = Vector3(-0.00954929, 0.431327, 0.228444)
+bones/19/rotation = Quaternion(0.0536854, 0.00888802, -0.0209309, 0.998299)
+bones/20/rotation = Quaternion(-0.00095152, 0.0354758, -0.21351, 0.976296)
+bones/21/rotation = Quaternion(0.042688, 3.54e-15, -3.735e-16, 0.999088)
+bones/23/rotation = Quaternion(-0.00883677, -0.707052, -0.00883677, 0.707052)
+bones/24/rotation = Quaternion(0.0124968, 8.44935e-05, -0.00675577, 0.999899)
+bones/26/rotation = Quaternion(-0.00883677, 0.707052, 0.00883677, 0.707052)
+bones/27/rotation = Quaternion(0.0124968, -8.44935e-05, 0.00675577, 0.999899)
+
+[node name="Head" parent="watergunner2c2/Armature/Skeleton3D" index="2"]
+visible = false
+
+[node name="Head_001" parent="watergunner2c2/Armature/Skeleton3D" index="3"]
+visible = false
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="watergunner2c2/Armature/Skeleton3D" index="6"]
+transform = Transform3D(-0.993677, 0.0359455, 0.106369, 0.105945, -0.0135246, 0.99428, 0.0371785, 0.999262, 0.00963076, -0.707857, 0.467791, 1.60103)
+bone_name = "Right Hand"
+bone_idx = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="watergunner2c2/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 4.65661e-09, 2.046e-08, 1.86265e-08, 0.3, 9.31323e-09, 5.82077e-11, -1.39698e-09, 1, -0.325001, 0.25, 0.500004)
+mesh = SubResource("BoxMesh_tv8gy")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="watergunner2c2/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 4.65661e-09, 2.046e-08, 1.86265e-08, 0.3, 1.02445e-08, 5.82077e-11, -1.86265e-09, 1, -0.325001, 1.75, 0.500005)
+mesh = SubResource("BoxMesh_tv8gy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="watergunner2c2/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 3.72529e-08, 7.33417e-09, 2.23517e-08, 1.85, 4.19095e-09, 5.82077e-11, -3.72529e-09, 0.45, -0.325001, 1.925, 0.772948)
+mesh = SubResource("BoxMesh_tv8gy")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="watergunner2c2/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(0.993677, 0.0687805, 0.0476752, -0.0359457, 1.84864, -0.00608603, -0.106369, 0.017817, 0.447426, -0.325001, 3.77501, 0.772951)
+amount = 3072
+lifetime = 2.0
+collision_base_size = 0.1
+visibility_aabb = AABB(-18, -35, -18, 36, 70, 36)
+process_material = SubResource("ParticleProcessMaterial_futbb")
+draw_pass_1 = SubResource("CylinderMesh_3126s")
+
+[node name="RayCast3D" type="RayCast3D" parent="watergunner2c2"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.0208748, 1.39385, 0.671076)
+target_position = Vector3(0, 0, -10)
+collide_with_areas = true
+
+[node name="RayCast3D2" type="RayCast3D" parent="watergunner2c2"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.0208748, 1.39385, 0.671076)
+target_position = Vector3(0, -2, -15)
+collide_with_areas = true
+
+[node name="RayCast3D3" type="RayCast3D" parent="watergunner2c2"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.0208748, 1.39385, 0.671076)
+target_position = Vector3(-2.5, 0, -10)
+collide_with_areas = true
+
+[node name="RayCast3D4" type="RayCast3D" parent="watergunner2c2"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.0208748, 1.39385, 0.671076)
+target_position = Vector3(-1.75, -0.625, -10)
+collide_with_areas = true
+
+[node name="RayCast3D5" type="RayCast3D" parent="watergunner2c2"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.0208748, 1.39385, 0.671076)
+target_position = Vector3(2.5, 0, -10)
+collide_with_areas = true
+
+[node name="RayCast3D6" type="RayCast3D" parent="watergunner2c2"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.0208748, 1.39385, 0.671076)
+target_position = Vector3(1.75, -0.625, -10)
+collide_with_areas = true
+
+[node name="Area3D" type="Area3D" parent="watergunner2c2"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.0208748, 1.39385, 0.671076)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="watergunner2c2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -3)
+visible = false
+mesh = SubResource("CylinderMesh_kkdyy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="watergunner2c2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -3)
+shape = SubResource("ConvexPolygonShape3D_opmgf")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="watergunner2c2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 0, -0.75, -3)
+shape = SubResource("ConvexPolygonShape3D_opmgf")
+disabled = true
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="watergunner2c2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 0.5, -0.866026, 0, 0.866026, 0.5, 0, -1.5, -2.625)
+shape = SubResource("ConvexPolygonShape3D_opmgf")
+disabled = true
+
+[node name="Water" type="Node" parent="watergunner2c2/Area3D"]
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="watergunner2c2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0.67)
+shape = SubResource("CylinderShape3D_t5myk")
+
+[node name="AnimationTree" type="AnimationTree" parent="watergunner2c2"]
+tree_root = SubResource("AnimationNodeStateMachine_n1r3b")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/stand = false
+parameters/conditions/walk = false
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -32.0
+offset_right = -16.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 96.0
+show_percentage = false
+
+[node name="ProgressBar2" type="ProgressBar" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -24.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 90.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="area_entered" from="watergunner2c2/Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="watergunner2c2/Area3D" to="." method="_on_area_3d_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="watergunner2c2"]

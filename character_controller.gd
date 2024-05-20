@@ -33,6 +33,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var _delta = 0.0
 
+func _ready():
+	health = 100
+
 func _process(delta):
 	health_prog_bar.value = health
 	water_prog_bar.value = water
@@ -81,7 +84,10 @@ func _physics_process(delta):
 		unwater()
 	
 	if dmg:
-		health -= 15 * delta
+		health -= 25 * delta
+	
+	if health <= 0.1:
+		get_tree().change_scene_to_file("res://node_3d.tscn")
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
