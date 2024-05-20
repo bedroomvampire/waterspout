@@ -16,10 +16,13 @@ func _process(delta):
 		queue_free()
 	
 	if dmg:
-		health -= 10 * delta
+		health -= 25 * delta
+
+func _on_body_entered(body):
+	if body.name == "Player":
+		body.dmg = true
 
 
-func _on_area_entered(area):
-	if area.has_node("Water"):
-		pass
-		#print("ya")
+func _on_body_exited(body):
+	if body.name == "Player":
+		body.dmg = false

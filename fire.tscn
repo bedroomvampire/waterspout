@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://h32vwou0yu4k"]
+
+[ext_resource type="Script" path="res://fire.gd" id="1_op652"]
+[ext_resource type="Material" uid="uid://cl2yk3m5m4thm" path="res://flamemat.tres" id="2_vgib8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b32oi"]
+height = 8.0
+radius = 2.0
+
+[sub_resource type="Curve" id="Curve_fc36p"]
+_data = [Vector2(0, 1), 0.0, -0.123945, 0, 0, Vector2(1, 0), -0.64127, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ya2ql"]
+curve = SubResource("Curve_fc36p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6ptwp"]
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 9.8, 0)
+scale_min = 0.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_ya2ql")
+scale_over_velocity_max = 419.35
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6btch"]
+material = ExtResource("2_vgib8")
+top_radius = 0.0
+bottom_radius = 0.125
+height = 0.25
+radial_segments = 4
+rings = 1
+cap_top = false
+
+[node name="Fire" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -14.5)
+script = ExtResource("1_op652")
+
+[node name="Fire" type="Node" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_b32oi")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+amount = 64
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+amount = 64
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+amount = 64
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+amount = 64
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_6ptwp")
+draw_pass_1 = SubResource("CylinderMesh_6btch")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+radius = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
