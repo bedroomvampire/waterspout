@@ -328,6 +328,8 @@ collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_5g13w")
 
+[node name="NPC" type="Node" parent="."]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_cv0yl")
 
@@ -434,7 +436,7 @@ bones/13/parent = 12
 bones/13/rest = Transform3D(0.99846, -0.0554701, -3.90356e-07, 0.0554701, 0.99846, 2.4026e-08, 3.88422e-07, -4.56421e-08, 1, -1.19779e-06, 1.80278, -2.43842e-08)
 bones/13/enabled = true
 bones/13/position = Vector3(-1.19779e-06, 1.80278, -2.43842e-08)
-bones/13/rotation = Quaternion(0.318708, -0.0636767, -0.0965948, 0.940765)
+bones/13/rotation = Quaternion(0.318708, -0.0636767, -0.0965949, 0.940765)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/name = "Left Hand"
 bones/14/parent = 13
@@ -490,7 +492,7 @@ bones/21/parent = 2
 bones/21/rest = Transform3D(1, 1.04855e-15, 7.04165e-15, -4.44089e-16, 0.996355, -0.0852982, -7.10543e-15, 0.0852982, 0.996355, 4.76456e-22, 2.20227, -7.45058e-09)
 bones/21/enabled = true
 bones/21/position = Vector3(4.76456e-22, 2.20227, -7.45058e-09)
-bones/21/rotation = Quaternion(0.042688, 3.54e-15, -3.735e-16, 0.999088)
+bones/21/rotation = Quaternion(0.042688, 3.54e-15, -3.73501e-16, 0.999088)
 bones/21/scale = Vector3(1, 1, 1)
 bones/22/name = "Head"
 bones/22/parent = 21
